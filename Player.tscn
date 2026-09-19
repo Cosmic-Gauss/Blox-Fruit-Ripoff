@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://8lg8kerv1a3y"]
+
+[ext_resource type="Script" uid="uid://cdkvunjv86c5v" path="res://Scripts/Player.gd" id="1_rpqav"]
+[ext_resource type="Material" uid="uid://da1v4vot0dor6" path="res://Assets/Materials/ShinyBlack.tres" id="2_kyqiw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyqiw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gntrk"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gntrk"]
+material = ExtResource("2_kyqiw")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gntrk"]
+
+[node name="Player" type="CharacterBody3D" unique_id=686206780]
+script = ExtResource("1_rpqav")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=924635026]
+shape = SubResource("CapsuleShape3D_kyqiw")
+
+[node name="Body" type="MeshInstance3D" parent="CollisionShape3D" unique_id=954718376]
+unique_name_in_owner = true
+mesh = SubResource("CapsuleMesh_gntrk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/Body" unique_id=1711895436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2513032, 0.5, 0.38403016)
+mesh = SubResource("SphereMesh_gntrk")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D/Body" unique_id=1789829339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20306838, 0.5, 0.38403016)
+mesh = SubResource("SphereMesh_gntrk")
+
+[node name="CamOrigin" type="Node3D" parent="." unique_id=2074692888]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0021398067, 0.51317096, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamOrigin" unique_id=1485213264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54603577, 0, 0)
+shape = SubResource("CapsuleShape3D_gntrk")
+spring_length = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="CamOrigin/SpringArm3D" unique_id=799980052]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72560596, -0.46014035, 1.5573053)
