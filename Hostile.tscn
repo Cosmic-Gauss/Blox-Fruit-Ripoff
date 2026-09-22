@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnlg2aecqmi0f"]
+
+[ext_resource type="Script" path="res://hostile.gd" id="1_u5na5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_miv5c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5alf"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sk6is"]
+material = SubResource("StandardMaterial3D_l5alf")
+
+[sub_resource type="SphereMesh" id="SphereMesh_fvilb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o4i2p"]
+albedo_color = Color(0.601261, 2.02149e-06, 4.33177e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gwxtl"]
+material = SubResource("StandardMaterial3D_o4i2p")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.8
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_u5na5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_miv5c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_sk6is")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.306914, -0.143192)
+mesh = SubResource("SphereMesh_fvilb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245339, 0, 0.470025)
+mesh = SubResource("CylinderMesh_gwxtl")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.217682, 0, 0.470025)
+mesh = SubResource("CylinderMesh_gwxtl")
